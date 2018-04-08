@@ -1,10 +1,15 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace vrba\rabotaApi\Http;
 
 use vrba\rabotaApi\Exception\UndefinedResourceException;
 use vrba\rabotaApi\Resource\Resource;
 
+/**
+ * Class ResourceContainer
+ *
+ * @package vrba\rabotaApi\Http
+ */
 class ResourceContainer
 {
     /**
