@@ -20,8 +20,14 @@ class Request
      */
     private const URL = 'https://api.rabota.ua';
 
+    /**
+     * Base host.
+     */
     private const HOST = 'rabota.ua';
 
+    /**
+     * Base http methods.
+     */
     private const POST = 'POST';
     private const PUT = 'PUT';
     private const GET = 'GET';
