@@ -162,7 +162,7 @@ class Request
      * @param array $params
      * @return string
      */
-    private function makeUriWithQuery(string $uri, array $params = [])
+    private function makeUriWithQuery(string $uri, array $params = []) : string
     {
         if (!empty($params)) {
             $uri .= '?' . $this->makeQueryFormattedString($params);
