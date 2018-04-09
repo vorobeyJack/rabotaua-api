@@ -42,7 +42,18 @@ abstract class Resource
      */
     private function execute(string $method, string $uri, array $params = [])
     {
-        return $this->request->$method($uri, $params);
+        return $this->request->$method($this->getResourceUri($uri), $params);
+    }
+
+    /**
+     * @param string $uri
+     * @return string
+     */
+    private function getResourceUri($uri = '') : string
+    {
+        $resource = static::RESOURCE;
+
+        return empty($uri) ? $resource : $resource . sprintf('/%s', $uri);
     }
 }
 
