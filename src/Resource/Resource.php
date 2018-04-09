@@ -40,9 +40,11 @@ abstract class Resource
      * @param array $params
      * @return mixed
      */
-    private function execute(string $method, string $uri, array $params = [])
+    protected function execute(string $method, string $uri, array $params = [])
     {
-        return $this->request->$method($this->getResourceUri($uri), $params);
+        $methodName = strtolower($method);
+
+        return $this->request->$methodName($this->getResourceUri($uri), $params);
     }
 
     /**
