@@ -2,6 +2,8 @@
 
 namespace vrba\rabotaApi;
 
+use vrba\rabotaApi\Http\{Request, ResourceContainer};
+
 /**
  * Class Index
  *
@@ -9,8 +11,11 @@ namespace vrba\rabotaApi;
  */
 class Index
 {
+    /**
+     * @return ResourceContainer
+     */
     public function run()
     {
-        //todo
+        return new ResourceContainer(new Request());
     }
 }
