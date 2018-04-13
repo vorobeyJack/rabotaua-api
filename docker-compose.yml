@@ -15,4 +15,4 @@ phpfpm:
     ports:
         - "9000:9000"
     volumes:
-        - ./public:/usr/share/nginx/html
+        - ./:/usr/share/nginx/html
