@@ -1,18 +1,27 @@
-nginx:
-    image: tutum/nginx
-    ports:
-        - "8090:80"
-    links:
-        - phpfpm
-    volumes:
-        - ./nginx/default:/etc/nginx/sites-available/default
-        - ./nginx/default:/etc/nginx/sites-enabled/default
-
-        - ./logs/nginx-error.log:/var/log/nginx/error.log
-        - ./logs/nginx-access.log:/var/log/nginx/access.log
-phpfpm:
-    image: php:fpm
-    ports:
-        - "9000:9000"
-    volumes:
-        - ./:/usr/share/nginx/html
+version: '3'
+services:
+    web:
+        image: nginx:alpine
+        volumes:
+            - "./etc/nginx/default.conf:/etc/nginx/conf.d/default.conf"
+            - "./web:/var/www/html"
+            - "./etc/nginx/default.template.conf:/etc/nginx/conf.d/default.template"
+        ports:
+            - "8090:80"
+        environment:
+            - NGINX_HOST=${NGINX_HOST}
+        command: /bin/sh -c "envsubst '$$NGINX_HOST' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+        restart: always
+        depends_on:
+            - php
+    composer:
+        image: "composer"
+        volumes:
+            - "./web:/app"
+        command: install
+    php:
+        image: nanoninja/php-fpm:${PHP_VERSION}
+        restart: always
+        volumes:
+            - "./etc/php/php.ini:/usr/local/etc/php/conf.d/php.ini"
+            - "./web:/var/www/html"
