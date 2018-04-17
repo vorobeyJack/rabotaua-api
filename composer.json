@@ -1,0 +1,28 @@
+{
+    "name": "vrba/rabotaua-api",
+    "description": "PHP library to interact with rabota.ua API",
+    "keywords": [
+        "php",
+        "api",
+        "rabota",
+        "rest"
+    ],
+    "type": "library",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Evgenii Vorobey",
+            "email": "evgeniivorobey1404@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "guzzlehttp/guzzle": "^6.3",
+        "symfony/var-dumper": "^4.1@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "vrba\\rabotaApi\\": "src/"
+        }
+    }
+}
