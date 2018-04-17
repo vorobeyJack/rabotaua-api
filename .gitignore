@@ -1,5 +1,3 @@
-DS_Store
 /vendor/
-/.idea/
-
-
+.idea
+.DS_Store
