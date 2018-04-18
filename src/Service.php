@@ -2,7 +2,8 @@
 
 namespace vrba\rabotaApi;
 
-use vrba\rabotaApi\Http\{Request, ResourceContainer};
+use vrba\rabotaApi\Http\Request;
+use vrba\rabotaApi\Resource\ResourceContainer;
 
 /**
  * Class Service
@@ -15,9 +16,8 @@ class Service
      * @param null $token
      * @return ResourceContainer
      */
-    public static function run($token = null)
+    public static function run($token = null) : ResourceContainer
     {
-//        echo 'Hello from bullshit!';
         return new ResourceContainer(new Request($token));
     }
 }

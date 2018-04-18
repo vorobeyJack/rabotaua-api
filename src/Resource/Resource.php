@@ -2,7 +2,7 @@
 
 namespace vrba\rabotaApi\Resource;
 
-use vrba\rabotaApi\Http\{ResourceContainer, Request};
+use vrba\rabotaApi\Http\Request;
 
 /**
  * Class Resource

@@ -4,4 +4,7 @@ require '../vendor/autoload.php';
 //
 use vrba\rabotaApi\Service;
 
-dump(Service::run());die;
+$api= Service::run();
+
+dump($api->company->getCurrent(720));die;
+

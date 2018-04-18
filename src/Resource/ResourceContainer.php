@@ -1,9 +1,9 @@
 <?php declare(strict_types = 1);
 
-namespace vrba\rabotaApi\Http;
+namespace vrba\rabotaApi\Resource;
 
 use vrba\rabotaApi\Exception\{UndefinedMethodException, UndefinedResourceException};
-use vrba\rabotaApi\Resource\Resource;
+use vrba\rabotaApi\Http\Request;
 
 /**
  * Class ResourceContainer
@@ -90,7 +90,7 @@ class ResourceContainer
     {
         $class = __NAMESPACE__ . '\\' . ucfirst($endpoint);
 
-        if (!$this->isResourceExists($endpoint)) {
+        if (!$this->isResourceExists($class)) {
             throw new UndefinedResourceException();
         }
 
@@ -107,11 +107,11 @@ class ResourceContainer
      */
     private function isResourceExists($class) : bool
     {
-        if (class_exists($class)) {
+        if (!class_exists($class)) {
             return false;
         }
 
-        return is_subclass_of(new $class, Resource::class);
+        return is_subclass_of(new $class($this), Resource::class);
     }
 
     /**
