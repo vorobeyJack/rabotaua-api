@@ -69,7 +69,7 @@ class Request
      * @param array $options
      * @return array|null
      */
-    private function makeRequest(string $uri, string $method, array $options = [])
+    private function makeRequest(string $method, string $uri, array $options = [])
     {
         $request = new GuzzleRequest($method, $uri, $this->headers);
         $response = $this->client->send($request, $options);
@@ -85,7 +85,7 @@ class Request
      */
     private function handleResponse(ResponseInterface $response)
     {
-        return json_decode($response->getBody(), true);
+        return json_decode((string)$response->getBody(), true);
     }
 
     /**

@@ -42,10 +42,10 @@ class ResourceContainer
 
     /**
      * @param string $endpoint
-     * @return string
+     * @return Resource
      * @throws UndefinedResourceException
      */
-    public function __get(string $endpoint) : string
+    public function __get(string $endpoint) : Resource
     {
         return $this->getResourceEndpoint($endpoint);
     }
@@ -67,10 +67,10 @@ class ResourceContainer
 
     /**
      * @param $endpoint
-     * @return string
+     * @return Resource
      * @throws UndefinedResourceException
      */
-    public function getResourceEndpoint($endpoint) : string
+    public function getResourceEndpoint($endpoint) : Resource
     {
         if (!isset($this->endpoints[$endpoint])) {
             $this->addResourceEndpoint($endpoint);
