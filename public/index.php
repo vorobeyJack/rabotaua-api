@@ -6,5 +6,5 @@ use vrba\rabotaApi\Service;
 
 $api = Service::run();
 
-//dump($api->company->getCurrent(720));die;
+dump($api->company->getCurrent(720));die;
 
