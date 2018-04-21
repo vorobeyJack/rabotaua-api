@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace vrba\rabotaApi\Resource;
 
@@ -51,11 +51,16 @@ abstract class Resource
      * @param string $uri
      * @return string
      */
-    private function getResourceUri($uri = '') : string
+    private function getResourceUri($uri = ''): string
     {
         $resource = static::RESOURCE;
 
-        return empty($uri) ? $resource : $resource . sprintf('/%s', $uri);
+        if (0 === strpos($uri, '?')) {
+            $uriPlaceholder = sprintf('?id=%s', str_replace('?', '', $uri));
+        } else {
+            $uriPlaceholder = sprintf('/%s', $uri);
+        }
+
+        return empty($uri) ? $resource : $resource . $uriPlaceholder;
     }
 }
-
