@@ -6,5 +6,5 @@ use vrba\rabotaApi\Service;
 
 $api = Service::run();
 
-dump($api->dictionary->getsEducation());die;
+dump($api->dictionary->getCityList());die;
 

@@ -15,7 +15,25 @@ class Dictionary extends Resource
     public const RESOURCE = 'dictionary';
 
     /**
-     * Get any subresource of main resource:dictionary.
+     * Get following subresources:
+     * /education
+     * /schedule
+     * /language/skill
+     * /city
+     * /resource
+     * /language
+     * /experience
+     * /currency
+     * /statusapplication/experience
+     * /statusapplication/salary
+     * /additional
+     * /vacancystate
+     * /rubric
+     * /subrubric
+     * /gender
+     * /branch
+     * /zapros
+     * /ativitylevel
      *
      * @param string $method
      * @param array $arguments
@@ -23,7 +41,8 @@ class Dictionary extends Resource
      */
     public function __call(string $method, array $arguments = [])
     {
-        $subResource = strtolower(str_replace('get','',$method));
+        $method = str_replace('List', '', $method);
+        $subResource = strtolower(str_replace('get', '', $method));
 
         return $this->execute('GET', $subResource);
     }
