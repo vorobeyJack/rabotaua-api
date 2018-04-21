@@ -1,10 +1,11 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace vrba\rabotaApi\Http;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request as GuzzleRequest;
 use Psr\Http\Message\ResponseInterface;
+use vrba\rabotaApi\Http\Response\ErrorResponse;
 
 /**
  * Class Request
@@ -59,15 +60,20 @@ class Request
     /**
      * Execute request.
      *
-     * @param string $uri
      * @param string $method
+     * @param string $uri
      * @param array $options
-     * @return array|null
+     * @return array|null|ErrorResponse
      */
     private function makeRequest(string $method, string $uri, array $options = [])
     {
         $request = new GuzzleRequest($method, $uri, $this->headers);
-        $response = $this->client->send($request, $options);
+
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (\Throwable $e) {
+            return new ErrorResponse($e);
+        }
 
         return $this->handleResponse($response);
     }
@@ -128,24 +134,11 @@ class Request
     }
 
     /**
-     * Make query string with params.
-     *
-     * @param array $params
-     * @return string
-     */
-    private function makeQueryFormattedString(array $params = []): string
-    {
-        $options = ['host' => self::HOST];
-
-        return http_build_query(array_merge($params, $options));
-    }
-
-    /**
      * Add authentication token to headers.
      *
      * @param string $token
      */
-    private function addAuthToken(string $token) : void
+    private function addAuthToken(string $token): void
     {
         $this->headers = ['Authorization' => 'Bearer ' . $token];
     }
@@ -157,7 +150,7 @@ class Request
      * @param array $params
      * @return string
      */
-    private function makeUriWithQuery(string $uri, array $params = []) : string
+    private function makeUriWithQuery(string $uri, array $params = []): string
     {
         if (!empty($params)) {
             $uri .= '?' . $this->makeQueryFormattedString($params);

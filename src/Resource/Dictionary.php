@@ -15,82 +15,16 @@ class Dictionary extends Resource
     public const RESOURCE = 'dictionary';
 
     /**
-     * Education lists.
-     */
-    private const EDUCATION = 'education';
-
-    /**
-     * Fulltime/parttime cases.
-     */
-    private const SCHEDULE = 'schedule';
-
-    /**
-     * Language levels.
-     */
-    private const LANGUAGE_SKILL = 'language/skill';
-
-    /**
-     * Cities list.
-     */
-    private const CITY = 'city';
-
-    /**
-     * Expitiencies list.
-     */
-    private const EXPERIENCE = 'experience';
-
-    /**
-     * Activity level.
-     */
-    private const ACTIVITY_LEVEL = 'activitylevel';
-
-    /**
-     * Genders.
-     */
-    private const GENDER = 'gender';
-
-    /**
-     * Categories.
-     */
-    private const RUBLIC = 'rublic';
-
-    /**
-     * Subcategories.
-     */
-    private const SUBRUBRIC = 'subrubric';
-
-    /**
-     * Additional info.
-     */
-    private const ADDITIONAL = 'additional';
-
-    /**
-     * Currency.
-     */
-    private const CURRENCY = 'currency';
-
-    /**
-     * Salaries list.
-     */
-    private const STATUSAPPLIECTION_SALARY = 'statusapplication/salary';
-
-    /**
-     * Vacancy state.
-     */
-    private const VACANCY_STATE = 'vacancystate';
-
-    /**
-     * Returns list of education.
+     * Get any subresource of main resource:dictionary.
      *
+     * @param string $method
+     * @param array $arguments
      * @return mixed
      */
-    public function getEducation()
+    public function __call(string $method, array $arguments = [])
     {
-        return $this->execute('GET', self::EDUCATION);
-    }
+        $subResource = strtolower(str_replace('get','',$method));
 
-    public function getSchedule()
-    {
-        return $this->execute('GET', self::SCHEDULE);
+        return $this->execute('GET', $subResource);
     }
 }
