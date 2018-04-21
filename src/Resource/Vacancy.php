@@ -15,6 +15,11 @@ class Vacancy extends Resource
     public const RESOURCE = 'vacancy';
 
     /**
+     * Sub resources.
+     */
+    public const QUESTIONS = 'questions';
+
+    /**
      * Return company item.
      *
      * @param int $id
@@ -23,5 +28,16 @@ class Vacancy extends Resource
     public function getCurrent(int $id)
     {
         return $this->execute('GET', '?' . $id);
+    }
+
+    /**
+     * @todo - refactor/debug generating uri with query params
+     *
+     * @param int $id
+     * @return mixed
+     */
+    public function getQuestions(int $id)
+    {
+        return $this->execute('GET', '/' . self::QUESTIONS . '?' . $id);
     }
 }

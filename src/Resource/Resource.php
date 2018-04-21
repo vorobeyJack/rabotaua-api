@@ -55,7 +55,7 @@ abstract class Resource
     {
         $resource = static::RESOURCE;
 
-        if (0 === strpos($uri, '?')) {
+        if (false !== strpos($uri, '?')) {
             $uriPlaceholder = sprintf('?id=%s', str_replace('?', '', $uri));
         } else {
             $uriPlaceholder = sprintf('/%s', $uri);
