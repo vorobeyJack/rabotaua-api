@@ -6,6 +6,3 @@
 
 ### 12-04-2018
 1. Add Request class, ResourceContainer etc.
-
-### 10-04-2018 
-1. Init project, create structure.
