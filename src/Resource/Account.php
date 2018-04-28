@@ -1,11 +1,10 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace vrba\rabotaApi\Resource;
 
 /**
  * Class Account
  *
- * @todo - add POST/PUT endpoints
  * @package vrba\rabotaApi\Resource
  */
 class Account extends Resource

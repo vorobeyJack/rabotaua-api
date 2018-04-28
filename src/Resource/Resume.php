@@ -1,6 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace vrba\rabotaApi\Resource;
+
+use vrba\rabotaApi\Exception\IncorrectResourceParameterException;
 
 /**
  * Class Resume
@@ -69,12 +71,47 @@ class Resume extends Resource
      *  "resumeId": 0
      * }
      *
-     * @param int $resumeId
      * @param array $personalData
      * @return mixed
+     * @throws IncorrectResourceParameterException
      */
-    public function createWithPersonalData(int $resumeId, array $personalData = [])
+    public function createWithPersonalData(array $personalData = [])
     {
-        return $this->execute('POST', $resumeId . '/' . self::PERSONAL_INFO, $personalData);
+        if(!isset($personalData['resumeId'])) {
+            throw new IncorrectResourceParameterException('resumeId');
+        }
+
+        return $this->execute('POST', $personalData['resumeId'] . '/' . self::PERSONAL_INFO, $personalData);
+    }
+
+    /**
+     * Creates resume with user's personal data, personalData:
+     * All fields are required
+     * {
+     *  "name": "string",
+     *  "middleName" : "string",
+     *  "surName" : "string",
+     *  "dateBirth": "2018-04-23T15:50:30.736Z",
+     *  "gender": 0
+     *  "cityId": 0,
+     *  "moving": [
+     *       0
+     *  ],
+     *
+     *  "resumeId": 0
+     * }
+     *
+     *
+     * @param array $personalData
+     * @return mixed
+     * @throws IncorrectResourceParameterException
+     */
+    public function createAdditionalWithPersonalData(array $personalData = [])
+    {
+        if(!isset($personalData['resumeId'])) {
+            throw new IncorrectResourceParameterException('resumeId');
+        }
+
+        return $this->execute('POST', $personalData['resumeId'] . '/' . self::PERSONAL_INFO, $personalData);
     }
 }
