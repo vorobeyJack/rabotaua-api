@@ -7,7 +7,7 @@ use vrba\rabotaApi\Service;
 $api = Service::run();
 
 try {
-    dump($api->resume->getCurrent(720));
+    dump($api->account->getFeedback(720));
 } catch (\Throwable $e) {
     dump(new \vrba\rabotaApi\Http\Response\ErrorResponse($e));
     die;
