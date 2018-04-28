@@ -5,6 +5,7 @@ namespace vrba\rabotaApi\Resource;
 /**
  * Class Vacancy
  *
+ * @todo - figure out with POST endpoints.
  * @package vrba\rabotaApi\Resource
  */
 class Vacancy extends Resource
