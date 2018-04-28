@@ -3,6 +3,7 @@
 namespace vrba\rabotaApi\Resource;
 
 use vrba\rabotaApi\Http\Request;
+use vrba\rabotaApi\Http\Response\ErrorResponse;
 
 /**
  * Class Resource
@@ -33,14 +34,14 @@ abstract class Resource
     }
 
     /**
-     * Execute one of the following methods: GET, POST, PUT, DELETE
+     * Executes request.
      *
      * @param string $method
      * @param string $uri
      * @param array $params
      * @return mixed
      */
-    protected function execute(string $method, string $uri, array $params = [])
+    protected function execute(string $method, string $uri = '', array $params = [])
     {
         $methodName = strtolower($method);
 
