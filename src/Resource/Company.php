@@ -21,7 +21,7 @@ class Company extends Resource
     private const CUSTOM_DESIGN = 'customdesign';
 
     /**
-     * Return company item.
+     * Returns company item.
      *
      * @param int $id
      * @return mixed
@@ -32,7 +32,7 @@ class Company extends Resource
     }
 
     /**
-     * Return list of vacancies.
+     * Returns list of vacancies.
      *
      * @param int $id
      * @return mixed
@@ -43,7 +43,7 @@ class Company extends Resource
     }
 
     /**
-     * Return custom design.
+     * Returns custom design.
      *
      * @param int $id
      * @return mixed

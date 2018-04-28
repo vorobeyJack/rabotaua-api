@@ -33,7 +33,7 @@ class Resume extends Resource
     }
 
     /**
-     * Return resume item by id.
+     * Returns resume item by id.
      *
      * @param int $id
      * @return mixed
@@ -100,7 +100,6 @@ class Resume extends Resource
      *
      *  "resumeId": 0
      * }
-     *
      *
      * @param array $personalData
      * @return mixed

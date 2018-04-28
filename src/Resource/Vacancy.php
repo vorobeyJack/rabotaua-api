@@ -21,7 +21,7 @@ class Vacancy extends Resource
     public const QUESTIONS = 'questions';
 
     /**
-     * Return company item.
+     * Returns company item.
      *
      * @param int $id
      * @return mixed

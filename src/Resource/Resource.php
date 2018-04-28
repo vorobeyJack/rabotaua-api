@@ -48,6 +48,8 @@ abstract class Resource
     }
 
     /**
+     * Gets resource uri.
+     *
      * @param string $uri
      * @return string
      */

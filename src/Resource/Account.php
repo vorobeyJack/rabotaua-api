@@ -56,7 +56,7 @@ class Account extends Resource
     }
 
     /**
-     * returns user info - for instance:
+     * Returns user info - for instance:
      * {
         "username": "example@mail.com",
         "password": "123456",
@@ -67,7 +67,7 @@ class Account extends Resource
         "firstName": "John",
         "lastName": "Doe",
         "stateId": "123"
-    }
+        }
      *
      * @return mixed
      */

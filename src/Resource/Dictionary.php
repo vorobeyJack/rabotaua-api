@@ -15,7 +15,7 @@ class Dictionary extends Resource
     public const RESOURCE = 'dictionary';
 
     /**
-     * Get following subresources:
+     * Gets following subresources:
      * /education
      * /schedule
      * /language/skill
